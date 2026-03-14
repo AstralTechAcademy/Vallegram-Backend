@@ -49,6 +49,28 @@ app.get('/feed', async (req, res) => {
     res.send(JSON.stringify(posts, null, 2))
 })
 
+app.get('/stories', async (req, res) => {
+  await client.connect()
+  const stories = await client.db("ElValle-App").collection("stories").aggregate([
+    {
+      $match: {
+              user_id: new ObjectId(req.query.userId),
+          }
+    },
+    {
+    $lookup: {
+            from: "users",
+            localField: "story_data.user_id",
+            foreignField: "_id",
+            as: "user_details"
+        }
+    },
+    { $unwind: "$user_details" }
+    ]).toArray()
+
+    res.send(JSON.stringify(stories, null, 2))
+})
+
 app.post('/like', async (req, res) => {
   await client.connect()
   const result = await client.db("ElValle-App").collection("likes").insertOne(
