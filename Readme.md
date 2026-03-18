@@ -9,20 +9,13 @@
 
 # Install dependencies from apt
 apt-get update
-apt-get install -yq ca-certificates git build-essential supervisor psmisc
-
-# Install nodejs
-mkdir /opt/nodejs
-curl https://nodejs.org/dist/v16.14.0/node-v16.14.0-linux-x64.tar.gz | tar xvzf - -C /opt/nodejs --strip-components=1
-ln -s /opt/nodejs/bin/node /usr/bin/node
-ln -s /opt/nodejs/bin/npm /usr/bin/npm
+apt-get install -yq nodejs npm git
 
 # Get the application source code from the Google Cloud Storage bucket.
-mkdir /vallegram-backend
 git clone https://github.com/AstralTechAcademy/Vallegram-Backend.git /vallegram-backend/
 
 # Install app dependencies.
-cd /vallegram-backend/
+cd vallegram-backend/
 npm install
 
 # Create a nodeapp user. The application will run as this user.
