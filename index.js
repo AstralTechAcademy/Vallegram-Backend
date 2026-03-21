@@ -44,6 +44,14 @@ app.get('/feed', async (req, res) => {
         }
     },
     { $unwind: "$user_details" },
+    {
+    $lookup: {
+            from: "likes",
+            localField: "post_id",
+            foreignField: "post_id",
+            as: "likes_details"
+        }
+    }
     ]).toArray()
 
     res.send(JSON.stringify(posts, null, 2))
