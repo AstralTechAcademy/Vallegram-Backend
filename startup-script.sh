@@ -8,5 +8,7 @@ apt-get install -yq nodejs npm git
 git clone https://github.com/AstralTechAcademy/Vallegram-Backend.git /vallegram-backend/
 
 # Install app dependencies.
-cd vallegram-backend/
+cd /vallegram-backend/
 npm install
+
+gsutil cp gs://vallegram-startup/.env .env

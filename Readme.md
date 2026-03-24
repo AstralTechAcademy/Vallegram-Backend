@@ -15,7 +15,7 @@ apt-get install -yq nodejs npm git
 git clone https://github.com/AstralTechAcademy/Vallegram-Backend.git /vallegram-backend/
 
 # Install app dependencies.
-cd vallegram-backend/
+cd /vallegram-backend/
 npm install
 
 # Create a nodeapp user. The application will run as this user.
@@ -46,9 +46,11 @@ supervisorctl update
 gcloud compute instances create <VM_NAME> \
    --machine-type=e2-small \
    --zone=europe-southwest1-a \ 
-   --tags=node-backend \
+   --tags=node-server \
    --metadata=startup-script-url=https://github.com/AstralTechAcademy/Vallegram-Backend/blob/main/startup-script.sh
 ```
+
+
 
 ### Open firewall port to instance
 
