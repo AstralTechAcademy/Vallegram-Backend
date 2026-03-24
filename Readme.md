@@ -43,10 +43,10 @@ supervisorctl update
 ### Create compute engine instance
 
 ```
-gcloud compute instances create backend \
-    --zone=europe-west4-a \
-    --machine-type=e2-standard-2 \
-    --tags=backend \
+gcloud compute instances create <VM_NAME> \
+   --machine-type=e2-small \
+   --zone=europe-southwest1-a \ 
+   --tags=node-backend \
    --metadata=startup-script-url=https://github.com/AstralTechAcademy/Vallegram-Backend/blob/main/startup-script.sh
 ```
 
